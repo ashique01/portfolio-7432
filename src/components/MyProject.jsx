@@ -18,7 +18,7 @@ const projects = [
   },
   {
     title:"Dhaka2070",
-    description: "A futuristic city simulation game where players manage resources, build infrastructure, and navigate challenges in a virtual Dhaka. Developed with Unity and C#.",
+    description: "A futuristic city simulation game where players manage resources, build infrastructure, and navigate challenges in a virtual Dhaka. Developed with TS.",
     liveLink: "https://dhaka2070.netlify.app", 
     repoLink: "https://github.com/Ashique01/dhaka2070",
   },

@@ -1,97 +1,161 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Laptop, Server, Blocks, Brain, Sparkles, Code2, Cpu, GitFork, Globe, Layers, Settings, BookOpenCheck, Languages } from 'lucide-react';
+import {
+  Code2, Cpu, GitFork, Layers, Globe, Settings, Languages, BookOpenCheck,
+  Atom, Database, Monitor, Terminal, Laptop, Book, Mic, Sparkles, Bot,
+  FileText, Image, Users, Briefcase, FileEdit, MessageSquare, Package, SquareStack,
+} from 'lucide-react';
 
-// Mapping icon names to components for dynamic rendering
-const iconMap = {
-  Code2: Code2,
-  Cpu: Cpu,
-  GitFork: GitFork,
-  Layers: Layers,
-  Globe: Globe,
-  Settings: Settings,
-  Languages: Languages,
-  BookOpenCheck: BookOpenCheck,
-  Laptop: Laptop,
-  Server: Server,
-  Blocks: Blocks,
-  Brain: Brain,
-  Sparkles: Sparkles,
+// New mapping for individual skill icons
+const skillIcons = {
+  'React': Atom,
+  'Python': Code2,
+  'SQL': Database,
+  'HTML': Code2,
+  'JavaScript': Code2,
+  'Java (Basic)': Code2,
+  'C': Code2,
+  'Windows': Monitor,
+  'Linux': Terminal,
+  'Git': GitFork,
+  'GitHub': GitFork,
+  'VS Code': Laptop,
+  'IntelliJ IDEA': Laptop,
+  'Atom': Laptop,
+  'PyCharm': Laptop,
+  'Jupyter Notebook': Book,
+  'Audacity': Mic,
+  'AI No-Code (MERN & C#)': Sparkles,
+  'ChatGPT': Bot,
+  'Gemini': Bot,
+  'GitHub Copilot': Bot,
+  'Microsoft Office': FileText,
+  'Adobe Photoshop (Basics)': Image,
+  'Teamwork': Users,
+  'Management': Briefcase,
+  'Report Writing': FileEdit,
+  'Communication': MessageSquare,
+  'Node.js (Advanced)': SquareStack,
+  'Solidity (Intermediate)': SquareStack,
+  'Next.js (Intermediate)': Atom,
+  'Docker (Intermediate)': Package,
 };
 
 const skillsCategories = [
   {
     title: 'Programming Languages',
-    icon: "Code2",
+    icon: Code2,
     skills: ['C', 'Python', 'SQL', 'HTML', 'JavaScript', 'React', 'Java (Basic)'],
   },
   {
     title: 'Operating Systems',
-    icon: "Cpu",
+    icon: Cpu,
     skills: ['Windows', 'Linux'],
   },
   {
     title: 'Version Control',
-    icon: "GitFork",
+    icon: GitFork,
     skills: ['Git', 'GitHub'],
   },
   {
     title: 'Software Tools',
-    icon: "Layers",
-    skills: ['VS Code', 'IntelliJ IDEA', 'Atom', 'PyCharm', 'Jupyter Notebook', 'Audacity', 'AI-Powered No-Code Web Development (MERN and C#)'],
+    icon: Layers,
+    skills: ['VS Code', 'IntelliJ IDEA', 'Atom', 'PyCharm', 'Jupyter Notebook', 'Audacity', 'AI No-Code (MERN & C#)', 'ChatGPT', 'Gemini', 'GitHub Copilot'],
   },
   {
     title: 'Industry Software Skills',
-    icon: "Globe",
+    icon: Globe,
     skills: ['Microsoft Office', 'Adobe Photoshop (Basics)'],
   },
   {
     title: 'General Business Skills',
-    icon: "Settings",
+    icon: Settings,
     skills: ['Teamwork', 'Management', 'Report Writing', 'Communication'],
   },
   {
     title: 'Languages',
-    icon: "Languages",
+    icon: Languages,
     skills: ['Bangla (Native)', 'English (Fluent)', 'Hindi (Conversational)'],
   },
   {
     title: 'Ongoing Learning',
-    icon: "BookOpenCheck",
+    icon: BookOpenCheck,
     skills: ['Node.js (Advanced)', 'Solidity (Intermediate)', 'Next.js (Intermediate)', 'Docker (Intermediate)'],
   },
 ];
 
-
 const Skills = () => {
-  // Animation variants for individual skill category cards
-  const cardVariants = {
-    hidden: { opacity: 0, y: 50, scale: 0.9 },
-    visible: (i) => ({
+  // Animation variants for the main container card
+  const containerCardVariants = {
+    hidden: { opacity: 0, y: 100, scale: 0.8, rotateX: 10 }, // More pronounced initial state
+    visible: {
       opacity: 1,
       y: 0,
       scale: 1,
+      rotateX: 0,
       transition: {
-        delay: i * 0.1, // Stagger delay for each card
-        duration: 0.7,
+        duration: 1.0, // Longer duration for main card
         ease: "easeOut",
+        when: "beforeChildren",
+        staggerChildren: 0.1, // Stagger categories inside the main card
       },
-    }),
+    },
   };
 
-  // Animation variants for individual skill chips within a card
+  // Animation variants for each skill category row
+  const categoryRowVariants = {
+    hidden: { opacity: 0, x: -80, rotateZ: -10 }, // More pronounced slide and slight rotation
+    visible: {
+      opacity: 1,
+      x: 0,
+      rotateZ: 0,
+      transition: {
+        type: "spring", // Spring for a more dynamic feel
+        stiffness: 150,
+        damping: 12,
+      }
+    },
+  };
+
+  // Animation variants for individual skill chips
   const skillChipVariants = {
-    hidden: { opacity: 0, x: -10 },
-    visible: { opacity: 1, x: 0, transition: { duration: 0.4, ease: "easeOut" } },
+    hidden: { opacity: 0, scale: 0.8, rotateX: 90 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      rotateX: 0,
+      transition: {
+        type: "spring", // Use spring for a bouncier effect
+        stiffness: 200,
+        damping: 15,
+      }
+    },
+    hover: {
+      scale: 1.1,
+      y: -3, // Slight lift
+      boxShadow: "0px 4px 10px rgba(0,188,212,0.3)", // Subtle glow on hover
+      transition: { duration: 0.2 }
+    },
+    tap: {
+      scale: 0.9,
+      y: 0,
+      boxShadow: "0px 2px 5px rgba(0,188,212,0.2)",
+    }
+  };
+
+  // Animation variants for the category icon itself
+  const categoryIconVariants = {
+    initial: { rotate: 0 }, // Initial state for the icon
+    hover: { rotate: 45, transition: { duration: 0.3, ease: "easeOut" } }, // Rotate 45 degrees on hover
   };
 
   return (
     <section
       id="skills"
       className="min-h-screen relative px-4 md:px-8 py-16
-                 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-yellow-400 overflow-hidden"
+                 bg-blue-100 dark:bg-gray-800 text-gray-900 dark:text-yellow-400 overflow-hidden" // Changed light mode background to solid blue-100
     >
-      {/* Animated Background Overlay - Subtle gradients for Web3 feel */}
+      {/* Animated Background Overlay - Subtle gradients (kept for subtle effect, but main background is solid) */}
       <div className="absolute inset-0 z-0 opacity-20 dark:opacity-10 pointer-events-none">
         <div className="absolute inset-0 bg-gradient-to-br from-blue-200/30 to-purple-200/30 dark:from-blue-900/30 dark:to-purple-900/30 animate-pulse-slow"></div>
         <div className="absolute inset-0 bg-gradient-to-tl from-cyan-200/30 to-green-200/30 dark:from-cyan-900/30 dark:to-green-900/30 animate-pulse-fast animation-delay-2000"></div>
@@ -104,80 +168,84 @@ const Skills = () => {
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        viewport={{ once: true, amount: 0.3 }}
+        viewport={{ once: false, amount: 0.3 }} // Changed to once: false
       >
         My Skills
       </motion.h2>
 
-      {/* Skills Grid Container with grid-flow-row-dense */}
-      <div className="relative z-10 max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mt-12">
-        {skillsCategories.map((category, index) => {
-          const IconComponent = iconMap[category.icon];
-          return (
-            <motion.div
-              key={category.title}
-              className="relative group cursor-pointer p-0.5 rounded-2xl overflow-visible"
-              variants={cardVariants}
-              initial="hidden"
-              whileInView="visible"
-              whileHover={{ scale: 1.045, rotateX: 2, rotateY: -2 }}
-              viewport={{ once: true, amount: 0.2 }}
-              custom={index}
-              transition={{ duration: 0.3, ease: 'easeOut' }}
-            >
-              {/* Animated border ring with soft glow and subtle shadow */}
+      {/* Main Skills Container Card */}
+      <motion.div
+        className="relative z-10 max-w-5xl mx-auto p-6 md:p-10 rounded-2xl
+                   bg-white/90 dark:bg-gray-900/70 shadow-2xl backdrop-blur-lg
+                   border border-blue-100 dark:border-yellow-700
+                   transform hover:scale-[1.005] transition-transform duration-300 ease-in-out" // Card background adjusted for light mode, added hover border
+        variants={containerCardVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: false, amount: 0.1 }} // Changed to once: false
+        whileHover={{
+          borderColor: '#00BCD4', // Cyan border on hover for light mode
+          boxShadow: "0px 10px 25px rgba(0,0,0,0.25), 0px 0px 15px rgba(0,188,212,0.3)",
+        }}
+      >
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6"> {/* Grid for categories inside the card */}
+          {skillsCategories.map((category, index) => {
+            const CategoryIconComponent = category.icon; // Directly use the component from category.icon
+            return (
               <motion.div
-                className="absolute -inset-1 rounded-2xl bg-gradient-to-br from-cyan-400 via-blue-400 to-purple-400 dark:from-yellow-400 dark:via-orange-400 dark:to-blue-500 blur-lg opacity-0 group-hover:opacity-80 transition-opacity duration-500 animate-gradient-move z-0 pointer-events-none shadow-2xl"
-                initial={{ scale: 0.97 }}
-                whileHover={{ scale: 1.09 }}
-                transition={{ duration: 0.5 }}
-              ></motion.div>
-              {/* Card content */}
-              <div className="relative z-10 bg-white/90 dark:bg-gray-900/90 backdrop-blur-2xl rounded-2xl p-10 shadow-2xl border border-blue-100 dark:border-yellow-700 group-hover:border-cyan-400 dark:group-hover:border-yellow-400 h-full flex flex-col items-start text-left transition-all duration-300 ease-in-out">
-                <div className="flex items-center mb-7">
-                  <div className="flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-tr from-cyan-500 to-blue-600 dark:from-yellow-400 dark:to-orange-400 text-white dark:text-gray-900 shadow-xl flex-shrink-0 mr-5 border-2 border-white dark:border-gray-900">
-                    {IconComponent && <IconComponent size={36} />}
-                  </div>
-                  <h3 className="text-2xl md:text-3xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-cyan-500 dark:from-yellow-400 dark:to-orange-500 drop-shadow-xl">
+                key={category.title}
+                className="flex flex-col items-start" // Flex column for icon/title then skills
+                variants={categoryRowVariants} // Apply category specific animation
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: false, amount: 0.5 }} // Changed to once: false
+              >
+                {/* Category Icon and Title */}
+                <div className="flex items-center mb-3"> {/* Smaller margin-bottom */}
+                  <motion.div // Added motion.div for the icon container
+                    className="w-10 h-10 flex items-center justify-center rounded-full bg-gradient-to-tr from-cyan-500 to-blue-600 dark:from-yellow-400 dark:to-orange-400 text-white dark:text-gray-900 mr-3 shadow-md flex-shrink-0"
+                    variants={categoryIconVariants} // Apply icon specific animation variants
+                    initial="initial" // Set initial state
+                    whileHover="hover" // Apply hover state
+                  >
+                    {CategoryIconComponent && <CategoryIconComponent size={24} />} {/* Smaller icon size */}
+                  </motion.div>
+                  <h3 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-cyan-500 dark:from-yellow-400 dark:to-orange-500"> {/* Smaller title text */}
                     {category.title}
                   </h3>
                 </div>
-                <div className="w-full flex flex-col gap-5">
-                  {category.skills.map((skill, skillIndex) => {
-                    const percentage = Math.floor(80 + Math.random() * 20);
+
+                {/* Skill Chips */}
+                <ul className="w-full flex flex-wrap gap-2 pl-13"> {/* Adjusted padding for alignment with icon */}
+                  {category.skills.map((skill, idx) => {
+                    const SkillIconComponent = skillIcons[skill]; // Get individual skill icon
                     return (
-                      <motion.div
-                        key={skillIndex}
-                        className="flex flex-col w-full"
+                      <motion.li
+                        key={idx}
+                        className="bg-blue-100/70 dark:bg-gray-700/70 text-blue-800 dark:text-yellow-300
+                                   px-3 py-1 rounded-full text-xs font-medium shadow-sm
+                                   border border-blue-200/50 dark:border-gray-600/50
+                                   flex items-center gap-1 transition-colors duration-200 cursor-pointer" // Added flex items-center gap-1
                         variants={skillChipVariants}
                         initial="hidden"
                         whileInView="visible"
-                        viewport={{ once: true, amount: 0.5 }}
+                        whileHover="hover"
+                        whileTap="tap"
+                        viewport={{ once: false, amount: 0.5 }} // Changed to once: false
                       >
-                        <div className="flex justify-between items-center mb-1">
-                          <span className="text-base md:text-lg font-semibold text-gray-800 dark:text-gray-200 tracking-tight">{skill}</span>
-                          <span className="text-xs md:text-sm font-bold text-cyan-500 dark:text-yellow-400 bg-cyan-50 dark:bg-yellow-900/30 px-2 py-0.5 rounded-full shadow-sm">{percentage}%</span>
-                        </div>
-                        <div className="w-full h-3 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
-                          <motion.div
-                            className="h-full rounded-full bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-400 dark:from-yellow-400 dark:via-orange-400 dark:to-blue-500 shadow-md"
-                            initial={{ width: 0 }}
-                            animate={{ width: `${percentage}%` }}
-                            transition={{ duration: 1.2, ease: 'easeOut', delay: 0.2 }}
-                          ></motion.div>
-                        </div>
-                      </motion.div>
+                        {SkillIconComponent && <SkillIconComponent size={14} className="flex-shrink-0" />} {/* Individual skill icon */}
+                        {skill}
+                      </motion.li>
                     );
                   })}
-                </div>
-              </div>
-            </motion.div>
-          );
-        })}
-      </div>
+                </ul>
+              </motion.div>
+            );
+          })}
+        </div>
+      </motion.div>
     </section>
   );
 };
 
 export default Skills;
-

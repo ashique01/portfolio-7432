@@ -1,6 +1,6 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import me from '../assets/me.png'; // Assuming you have this image in src/assets
+import React from "react";
+import { motion } from "framer-motion";
+import me from "../assets/me.png"; // Assuming you have this image in src/assets
 
 const AboutMe = () => {
   // Animation variants for staggered appearance of the main content block
@@ -12,8 +12,8 @@ const AboutMe = () => {
       transition: {
         duration: 0.5,
         ease: "easeOut",
-        when: "beforeChildren", 
-        staggerChildren: 0.2, 
+        when: "beforeChildren",
+        staggerChildren: 0.2,
       },
     },
   };
@@ -21,7 +21,11 @@ const AboutMe = () => {
   // Animation variants for individual text and image elements
   const itemVariants = {
     hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.7, ease: "easeOut" },
+    },
   };
 
   return (
@@ -55,7 +59,7 @@ const AboutMe = () => {
               src={me}
               alt="Ashique Murad"
               className="w-full h-full object-cover rounded-full md:rounded-2xl border-none"
-              style={{ objectPosition: 'center top' }}
+              style={{ objectPosition: "center top" }}
             />
           </div>
         </motion.div>
@@ -69,10 +73,50 @@ const AboutMe = () => {
             About Me
           </motion.h2>
           <motion.p
-            className="text-lg md:text-xl text-gray-700 dark:text-gray-300 leading-relaxed mb-8 text-center md:text-left" // Changed text-justify to text-center for mobile, text-left for desktop
+            className="text-base md:text-xl text-gray-700 dark:text-gray-300 leading-relaxed mb-8 text-left space-y-4"
             variants={itemVariants}
           >
-            I’m <span className="font-semibold text-blue-600 dark:text-yellow-400">Ashique Murad</span>, a curious mind from Bangladesh with a relentless passion for technology. Ever since I first wrote a line of code, I knew I wanted to build things that mattered — software that solves real problems and connects people. My academic journey in Computer Science and Engineering sharpened my skills in <span className="font-semibold">Python, Node.js, and backend systems</span>, but it was the countless projects, sleepless nights, and challenges that truly shaped me. I’ve built robust <span className="font-semibold">e-commerce platforms</span>, intelligent <span className="font-semibold">AI-powered tools</span>, and engaging <span className="font-semibold">interactive Telegram bots</span>, each project pushing me beyond my comfort zone and expanding my technical horizons. Diving into the world of decentralized applications and Web3 felt like stepping into the future, and I embraced it wholeheartedly, exploring <span className="font-semibold">blockchain technologies and smart contract development</span>. I’m not just a developer; I’m a problem-solver who thrives in collaborative environments, loves the creative chaos of new ideas, and believes in learning as a lifelong journey. Whether it's crafting a scalable backend, integrating AI into a product, or simplifying user experiences, I bring my energy, curiosity, and dedication to every line of code I write. This isn’t just my career — it’s my passion, and I’m on a mission to build meaningful solutions that make a difference.
+            <span className="block mb-4">
+              I’m{" "}
+              <span className="font-semibold text-blue-600 dark:text-yellow-400">
+                Ashique Murad
+              </span>
+              , a curious mind from Bangladesh with a relentless passion for
+              technology. Ever since I wrote my first line of code, I knew I
+              wanted to build things that mattered — software that solves real
+              problems and connects people.
+            </span>
+            <span className="block mb-4">
+              My academic journey in Computer Science and Engineering sharpened
+              my skills in{" "}
+              <span className="font-semibold">
+                Python, Node.js, and backend systems
+              </span>
+              . But it was the countless projects, sleepless nights, and
+              challenges that truly shaped me.
+            </span>
+            <span className="block mb-4">
+              I’ve built{" "}
+              <span className="font-semibold">e-commerce platforms</span>,
+              intelligent <span className="font-semibold">AI tools</span>, and
+              engaging <span className="font-semibold">Telegram bots</span> —
+              each project pushing me beyond my limits and broadening my skills.
+            </span>
+            <span className="block mb-4">
+              Exploring{" "}
+              <span className="font-semibold">Web3 and decentralized apps</span>{" "}
+              opened a new frontier for me, diving into{" "}
+              <span className="font-semibold">
+                blockchain technologies and smart contracts
+              </span>
+              .
+            </span>
+            <span className="block">
+              I’m not just a developer; I’m a problem-solver, collaborator, and
+              lifelong learner. Whether crafting scalable backends, integrating
+              AI, or simplifying user experience — I bring passion, curiosity,
+              and dedication to every line of code.
+            </span>
           </motion.p>
 
           {/* Minimalist Buttons with icons and glass effect */}
@@ -83,7 +127,10 @@ const AboutMe = () => {
             <motion.a
               href=""
               download="Ashique_Murad_Resume.pdf"
-              whileHover={{ scale: 1.07, boxShadow: "0px 0px 16px rgba(0,188,212,0.18)" }}
+              whileHover={{
+                scale: 1.07,
+                boxShadow: "0px 0px 16px rgba(0,188,212,0.18)",
+              }}
               whileTap={{ scale: 0.96 }}
               className="px-7 py-3 rounded-full bg-white/70 dark:bg-gray-900/70 backdrop-blur-md border border-blue-400 dark:border-yellow-400 text-blue-700 dark:text-yellow-400 font-semibold shadow-md hover:bg-blue-600 hover:text-white dark:hover:bg-yellow-500 dark:hover:text-gray-900 transition-all duration-300 transform hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-cyan-400"
             >
@@ -93,11 +140,15 @@ const AboutMe = () => {
               href="https://www.linkedin.com/in/yourprofile"
               target="_blank"
               rel="noopener noreferrer"
-              whileHover={{ scale: 1.07, boxShadow: "0px 0px 16px rgba(250,204,21,0.18)" }}
+              whileHover={{
+                scale: 1.07,
+                boxShadow: "0px 0px 16px rgba(250,204,21,0.18)",
+              }}
               whileTap={{ scale: 0.96 }}
               className="px-7 py-3 rounded-full bg-white/70 dark:bg-gray-900/70 backdrop-blur-md border border-blue-400 dark:border-yellow-400 text-blue-700 dark:text-yellow-400 font-semibold shadow-md hover:bg-blue-50 dark:hover:bg-gray-800 transition-all duration-300 transform hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-yellow-400"
             >
-              <span className="inline-block align-middle mr-2">🔗</span> LinkedIn
+              <span className="inline-block align-middle mr-2">🔗</span>{" "}
+              LinkedIn
             </motion.a>
           </motion.div>
         </div>

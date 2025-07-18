@@ -14,9 +14,8 @@ const experiences = [
 		role: "Freelancer",
 		company: "Fiverr & Upwork",
 		period: "July 2024 - Present",
-		description: `Selectively working on client projects primarily in software development, including backend APIs, web3 decentralized applications, and automation tools. Under mentorship to refine skills in project management, client communication, and delivery timelines.
-      Developing customized solutions such as Telegram bots, AI integrations, and web applications tailored to client needs. Managing full project lifecycle from requirement gathering, design, development, testing to deployment and maintenance.
-      Prioritizing quality, scalability, and user experience while continuously learning emerging technologies and best practices.`,
+		description: `Selectively working on client projects primarily in software development, including backend APIs, and automation tools. Under mentorship to refine skills in project management, client communication, and delivery timelines.
+      Developing customized solutions such as Telegram bots, AI integrations, and web applications tailored to client needs. Prioritizing quality, scalability, and user experience while continuously learning emerging technologies and best practices.`,
 	},
 	{
 		role: "IT Executive",
