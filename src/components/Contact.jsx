@@ -193,20 +193,7 @@ const Contact = () => {
                   +8801626484541
                 </a>
               </motion.div>
-              <motion.div
-                className="flex items-center space-x-3 sm:space-x-4 p-2 sm:p-3 rounded-lg bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-300 transform hover:scale-[1.01]"
-                whileHover={{ x: 8, boxShadow: "0 4px 15px rgba(0,0,0,0.1)" }}
-              >
-                <MapPin
-                  className="text-blue-600 dark:text-yellow-400 flex-shrink-0"
-                  size={22}
-                  sm:size={26}
-                />
-                <span className="text-base sm:text-lg font-medium">
-                  Dhaka, Bangladesh
-                </span>
-              </motion.div>
-              {/* WhatsApp */}
+               {/* WhatsApp */}
               <motion.div
                 className="flex items-center space-x-3 sm:space-x-4 p-2 sm:p-3 rounded-lg bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-300 transform hover:scale-[1.01]"
                 whileHover={{ x: 8 }}
@@ -241,6 +228,20 @@ const Contact = () => {
                 </a>
               </motion.div>
 
+              <motion.div
+                className="flex items-center space-x-3 sm:space-x-4 p-2 sm:p-3 rounded-lg bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-300 transform hover:scale-[1.01]"
+                whileHover={{ x: 8, boxShadow: "0 4px 15px rgba(0,0,0,0.1)" }}
+              >
+                <MapPin
+                  className="text-blue-600 dark:text-yellow-400 flex-shrink-0"
+                  size={22}
+                  sm:size={26}
+                />
+                <span className="text-base sm:text-lg font-medium">
+                  Dhaka, Bangladesh
+                </span>
+              </motion.div>
+             
               {/* Social Media Buttons - Centered on mobile, text hidden on smallest screens */}
               <div className="flex space-x-3 sm:space-x-4 pt-4 sm:pt-6 justify-center md:justify-start">
                 <motion.a
