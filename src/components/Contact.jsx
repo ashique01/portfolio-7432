@@ -219,7 +219,7 @@ const Contact = () => {
               >
                 <Send className="text-sky-500 dark:text-sky-400" size={20} />
                 <a
-                  href="https://t.me/YourTelegramUsername" // Replace with actual username
+                  href="https://t.me/ashriko01" // Replace with actual username
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-sm sm:text-base font-medium hover:underline text-sky-600 dark:text-sky-300"
