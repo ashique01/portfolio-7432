@@ -94,8 +94,8 @@ const projects = [
     description:
       "Blood donation platform connecting donors and recipients with profile and location-based features.",
     techStack: "React.js, Firebase",
-    liveLink: "#",
-    repoLink: "https://github.com/Ashique01/bloodcon",
+    liveLink: "https://bdbloodbox.netlify.app/",
+    repoLink: "https://github.com/ashique01/BloodCon-MERN",
   },
   {
     title: "Learning Mate",
