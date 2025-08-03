@@ -157,7 +157,7 @@ const AboutMe = () => {
             variants={itemVariants}
           >
             <motion.a
-              href=""
+              href="/me_resume.pdf"
               download="Ashique_Murad_Resume.pdf"
               whileHover={{
                 scale: 1.1,
